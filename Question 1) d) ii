@@ -1,0 +1,4 @@
+select a.metabolism
+from annotation as a join (select metabolism, count(metabolism) from annotation group by metabolism having count(metabolism)>1) b
+on a.metabolism=b.metabolism
+order by a.metabolism;
