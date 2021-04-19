@@ -1,0 +1,3 @@
+select m.LastName, m.FirstName, m.MemberID
+from Member as m
+where m.JoinDate like '%2013%';
