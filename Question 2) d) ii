@@ -1,0 +1,4 @@
+select distinct a.LastName, a.FirstName, a.MemberID from
+(select distinct m.LastName, m.FirstName, m.MemberID from Member as m inner join Entry as e on m.MemberID = e.MemberID) as a
+where a.MemberID in
+(select distinct b.MemberID from (select e.MemberID, count(distinct e.Year) as Y from Entry as e group by e.MemberID) as b where Y > 2);
