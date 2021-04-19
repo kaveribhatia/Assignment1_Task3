@@ -1,0 +1,4 @@
+select distinct a.LastName, a.FirstName, a.MemberID from
+(select distinct m.LastName, m.FirstName, m.MemberID from Member as m inner join Entry as e on m.MemberID = e.MemberID) as a
+where a.MemberID not in
+(select distinct e.MemberID from Entry as e where e.Year = "2013");
